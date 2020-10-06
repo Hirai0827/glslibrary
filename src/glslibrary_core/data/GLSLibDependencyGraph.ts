@@ -47,8 +47,8 @@ export class GLSLibDependencyGraph {
     };
     dfs = (v:string) => {
         this.seen[v] = true;
-        // @ts-ignore
-        const keys = [...this.data[v]];
+        const keys = new Array<string>();
+        this.data[v].forEach(v => keys.push(v));
         for(let i = 0; i < keys.length; i++){
             if(this.finished[keys[i]]){
                 continue;
