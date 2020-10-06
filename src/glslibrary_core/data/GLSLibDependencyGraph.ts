@@ -16,8 +16,7 @@ export class GLSLibDependencyGraph {
             this.data[keys[i]] = new Set<string>();
             const src = lib.data[keys[i]].src;
             const includeRegex = GLSLibraryRegex.includeRegex;
-            // @ts-ignore
-            const regResArray = [...src.matchAll(includeRegex)];
+            const regResArray = Array.from(src.matchAll(includeRegex));
             for(let j = 0; j < regResArray.length; j++){
                 this.data[keys[i]].add(regResArray[j][2]);
             }
