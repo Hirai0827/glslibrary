@@ -5,6 +5,7 @@ import {GLSLibDependencyGraph} from "../data/GLSLibDependencyGraph";
 export class GLSLibraryImporter {
     lib:GLSLibrary;
     constructor() {
+        this.lib = new GLSLibrary();
     }
     validate(){
         this.detectLoop();
@@ -12,7 +13,7 @@ export class GLSLibraryImporter {
     private detectLoop(){
 
     }
-    replaceWithLib = (match,p1,p2) => {
+    replaceWithLib = (match:string,p1:string,p2:string) => {
         if(p2){
             if(this.lib.data[p2]){
                 return this.lib.data[p2].src;
@@ -21,7 +22,7 @@ export class GLSLibraryImporter {
             }
         }
     };
-    import = (source:string) => {
+    import:(source:string)=>string|null = (source:string) => {
         const includeRegex = GLSLibraryRegex.includeRegex;
         const dependencyGraph = new GLSLibDependencyGraph(this.lib);
         const hasLoop = dependencyGraph.detectLoop();
@@ -31,6 +32,7 @@ export class GLSLibraryImporter {
         }else{
             const matchArray = source.match(includeRegex);
             if(matchArray){
+                // @ts-ignore
                 const replacedSource = source.replace(includeRegex,this.replaceWithLib);
                 return this.import(replacedSource);
             }else{

@@ -1,5 +1,4 @@
 import {GLSLibrary} from "./GLSLibrary";
-import {string} from "prop-types";
 import {GLSLibraryRegex} from "./GLSLregex";
 
 export class GLSLibDependencyGraph {
@@ -12,6 +11,7 @@ export class GLSLibDependencyGraph {
         this.data = {};
         this.seen = {};
         this.finished = {};
+        this.hasLoop = false;
         for(let i = 0; i < keys.length; i++){
             this.data[keys[i]] = new Set<string>();
             const src = lib.data[keys[i]].src;
@@ -47,7 +47,8 @@ export class GLSLibDependencyGraph {
     };
     dfs = (v:string) => {
         this.seen[v] = true;
-        const keys = Array.from(this.data[v]);
+        // @ts-ignore
+        const keys = [...this.data[v]];
         for(let i = 0; i < keys.length; i++){
             if(this.finished[keys[i]]){
                 continue;

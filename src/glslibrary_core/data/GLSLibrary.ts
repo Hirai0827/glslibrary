@@ -1,5 +1,4 @@
 import {GLSLmodule} from "./GLSLmodule";
-import {string} from "prop-types";
 
 export class GLSLibrary {
     data:{[name:string]:GLSLmodule};
