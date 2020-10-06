@@ -68,10 +68,9 @@
     /* Disallow inconsistently-cased references to the same file. */
     "lib": [
       "dom",
-      "es5",
+      "esnext",
       "scripthost",
-      "es2015.collection",
-      "es2020.string"
+      "dom.iterable"
     ]
   }
 }
