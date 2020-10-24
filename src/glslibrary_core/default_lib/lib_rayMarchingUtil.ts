@@ -2,6 +2,7 @@ import {GLSLmodule} from "../data/GLSLmodule";
 
 export const RayMarchingUtil:GLSLmodule = {
     name:"RayMarchingUtil",
+    description:"Utilities about raymarching and SDF(signed distance function)",
     src:
         `
 float sphere(vec3 p,vec3 c,float radius){

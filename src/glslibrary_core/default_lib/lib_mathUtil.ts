@@ -2,6 +2,7 @@ import {GLSLmodule} from "../data/GLSLmodule";
 
 export const MathUtil:GLSLmodule = {
     name:"MathUtil",
+    description:"Utilities about Math such as random and genRot",
     src:`
 float random (vec2 st) {
     return fract(sin(dot(st.xy,
