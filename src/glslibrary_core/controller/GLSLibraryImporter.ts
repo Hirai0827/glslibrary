@@ -16,7 +16,7 @@ export class GLSLibraryImporter {
     replaceWithLib = (match:string,p1:string,p2:string) => {
         if(p2){
             if(this.lib.data[p2]){
-                return this.lib.data[p2].src;
+                return "\n"+this.lib.data[p2].src+"\n";
             }else{
                 console.error("Unexpect Library Error");
             }

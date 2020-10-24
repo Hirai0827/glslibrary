@@ -12,7 +12,7 @@ test("include test",() => {
     glslib.register(glsLmodule);
     //NoLib
     expect(glsLibraryImporter.import("hoge")).toBe("hoge");
-    expect(glsLibraryImporter.import("#include<sample>")).toBe("lib included");
-    expect(glsLibraryImporter.import("#include <sample>")).toBe("lib included");
+    expect(glsLibraryImporter.import("#include<sample>")).toBe("\nlib included\n");
+    expect(glsLibraryImporter.import("#include <sample>")).toBe("\nlib included\n");
     expect(glsLibraryImporter.import("#include < sample >")).toBe("#include < sample >");
 });
