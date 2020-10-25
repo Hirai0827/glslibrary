@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "test": "jest"
   },
   "keywords": [],
