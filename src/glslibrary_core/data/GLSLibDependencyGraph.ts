@@ -27,6 +27,10 @@ export class GLSLibDependencyGraph {
         this.data[from].add(to);
     };
     detectLoop = () => {
+        if(Object.keys(this.data).length == 0){
+            //ライブラリ無し
+            return false;
+        }
         Object.keys(this.data).forEach((str) => {
             this.seen[str] = false;
             this.finished[str] = false;
@@ -36,7 +40,7 @@ export class GLSLibDependencyGraph {
         Object.keys(this.data).forEach((str) => {
            if(this.data[str].has(str)){
                this.hasLoop = true;
-               return false;
+               return true;
            }
         });
         this.dfs(Object.keys(this.data)[0]);

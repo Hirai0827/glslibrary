@@ -16,3 +16,10 @@ test("include test",() => {
     expect(glsLibraryImporter.import("#include <sample>")).toBe("\nlib included\n");
     expect(glsLibraryImporter.import("#include < sample >")).toBe("#include < sample >");
 });
+test("none test",() => {
+    const glslib = new GLSLibrary();
+    const glsLibraryImporter = new GLSLibraryImporter();
+    glsLibraryImporter.lib = glslib;
+    //NoLib
+    expect(glsLibraryImporter.import("hoge")).toBe("hoge");
+});
